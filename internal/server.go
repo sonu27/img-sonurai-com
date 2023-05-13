@@ -42,6 +42,9 @@ func Start() error {
 	ss := server{bucket: b}
 
 	r := chi.NewRouter()
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(""))
+	})
 	r.Get("/{img}", ss.GetWallpaperHandler)
 
 	port := os.Getenv("PORT")
